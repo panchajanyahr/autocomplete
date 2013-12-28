@@ -1,0 +1,40 @@
+ul, li {
+	list-style-type: none;
+	padding:0; 
+	margin:0;
+}
+
+.query {
+	margin-left: 5px;
+}
+
+ul.results {
+	width: 600px;
+}
+
+ul.results li {
+	display: inline-block;
+	width: 28%;
+	border: 1px solid gray;
+	padding: 5px 20px 5px 5px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	position: relative;
+	border-radius: 5px;
+	cursor: pointer;
+}
+ul.results div {
+	width: 100%;
+	cursor: auto;
+}
+ul.results li:after {
+	content: "+";
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	margin-top: -9px;
+}
+
+ul.results .description {
+	color: gray;
+}
