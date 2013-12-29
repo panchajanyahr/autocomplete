@@ -39,6 +39,7 @@ $(function() {
 		showResults(tickers);
 	});
 
+
 });
 
 function filterTags(query) {
@@ -63,12 +64,22 @@ function showResults(results) {
 		descriptionNode.addClass("description");
 		descriptionNode.text(ticker['Sector']);
 
+		var plusNode = $("<a/>");
+		plusNode.addClass("plus");
+		plusNode.text("+");
+		plusNode.click(function() {
+			console.log("clicked");
+		});
+
 		var tagNode = $("<li/>");
 		tagNode.append(nameNode);
 		tagNode.append(descriptionNode);
+		tagNode.append(plusNode);
 		tagNode.prop('_data', ticker);
 
 		tagNode.appendTo($("ul.results")).fadeIn(2000);
 	});
+
+
 }
 

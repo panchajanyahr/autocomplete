@@ -45,13 +45,13 @@ ul.results div.description {
 	font-size: 13px;
 }
 
-ul.results li:after {
-	content: "+";
+ul.results li a {
 	position: absolute;
-	right: 5px;
+	right: 10px;
 	top: 50%;
-	margin-top: -9px;
+	margin-top: -15px;
 	color: gray;
+	font-size: 25px;
 }
 
 ul.results .description {
