@@ -112,10 +112,9 @@ function showResults(results) {
 
 		tagNode.appendTo($("ul.results"));
 
-		plusNode.click(function() {
+		tagNode.click(function() {
 			addToBasket(tagNode);
 		});
-
 	});
 
 
