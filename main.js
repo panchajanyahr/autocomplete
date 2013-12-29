@@ -72,11 +72,13 @@ function addToBasket(tag) {
 	tagNode.prop('_data', data);
 
 	tagNode.appendTo($("ul.basket")).hide().fadeIn(fadeDuration);
+	closeNode.click(function() {
+		tagNode.fadeOut(fadeDuration, function() { $(this).remove(); });
+	});
 }
 
 function showResults(results) {
 	$("ul.results li").remove();
-
 
 	$.each(results.slice(0, 18), function(i, ticker) {
 		var nameNode = $("<div/>");
