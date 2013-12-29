@@ -72,9 +72,9 @@ function addToBasket(tag) {
 	var nameNode = $("<span/>");
 	nameNode.text(data['Ticker']);
 
-	var closeNode = $("<a/>");
-	closeNode.addClass("close");
-	closeNode.text("x");
+	var closeNode = $("<i/>");
+	closeNode.addClass("fa");
+	closeNode.addClass("fa-times");
 
 	var tagNode = $("<li/>");
 	tagNode.append(nameNode);

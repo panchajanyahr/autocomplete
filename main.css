@@ -44,14 +44,14 @@ ul.results {
 
 	float: left;
 	clear: left;
-	padding-right: 20px;
+	padding-right: 25px;
 }
 
-.basket ul li a {
+.basket ul li i {
 	position: absolute;
 	right: 5px;
-	top: 6px;
-	font-size: 12px;
+	top: 4px;
+	font-size: 15px;
 	cursor: pointer;
 }
 
