@@ -1,4 +1,5 @@
 var allTickers = [];
+var fadeDuration = 500;
 
 function processCsv(path, callback) {
 	$.ajax({
@@ -52,8 +53,28 @@ function matches(a, b) {
 	return a.toLowerCase().indexOf(b.toLowerCase()) != -1;
 }
 
+function addToBasket(tag) {
+	var data = tag.prop('_data');
+	tag.fadeOut(fadeDuration, function() { $(this).remove(); });
+
+	var nameNode = $("<span/>");
+	nameNode.text(data['Ticker']);
+
+	var closeNode = $("<a/>");
+	closeNode.addClass("close");
+	closeNode.text("x");
+
+	var tagNode = $("<li/>");
+	tagNode.append(nameNode);
+	tagNode.append(closeNode);
+	tagNode.prop('_data', data);
+
+	tagNode.appendTo($("ul.basket")).hide().fadeIn(fadeDuration);
+}
+
 function showResults(results) {
 	$("ul.results li").remove();
+
 
 	$.each(results.slice(0, 18), function(i, ticker) {
 		var nameNode = $("<div/>");
@@ -67,9 +88,6 @@ function showResults(results) {
 		var plusNode = $("<a/>");
 		plusNode.addClass("plus");
 		plusNode.text("+");
-		plusNode.click(function() {
-			console.log("clicked");
-		});
 
 		var tagNode = $("<li/>");
 		tagNode.append(nameNode);
@@ -77,7 +95,12 @@ function showResults(results) {
 		tagNode.append(plusNode);
 		tagNode.prop('_data', ticker);
 
-		tagNode.appendTo($("ul.results")).fadeIn(2000);
+		tagNode.appendTo($("ul.results"));
+
+		plusNode.click(function() {
+			addToBasket(tagNode);
+		});
+
 	});
 
 
