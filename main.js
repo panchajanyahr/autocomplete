@@ -1,27 +1,49 @@
-var allTags = [
-	{name: "Twitter", description: "Microblogging"},
-	{name: "Google", description: "Search"},
-	{name: "Gmail", description: "Email"},
-	{name: "Yahoo", description: "Search"},
-	{name: "Yahoo Mail", description: "Email"},
-	{name: "Facebook", description: "Social"},
-	{name: "Wikipedia", description: "Information"},
-	{name: "Youtube", description: "Videos"}
-];
+var allTickers = [];
+
+function processCsv(path, callback) {
+	$.ajax({
+		type: 'GET',
+		url: path,
+        data: null,
+        success: function(text) {
+    		var rows = [];
+        	var fields = text.split(/\n/);
+			var headers = fields[0].split(',');
+			for(var i = 1; i < fields.length; i += 1) {
+				var tick = {};
+				var values = fields[i].split(',');
+
+				if (values.length > 1) {
+					for (var j = 0; j < headers.length - 1; j += 1) {
+						tick[headers[j]] = values[j];
+					}
+
+					rows.push(tick);					
+				}
+           }
+
+           callback(rows);
+        }
+	});
+}
 
 $(function() {
-	$(".query").keyup(function() {
-		var query = $(this).val();
-		var tags= filterTags(query);
-		showResults(tags);
+	processCsv('List.csv', function(rows) {
+		allTickers = rows;
+		showResults(allTickers);
 	});
 
-	showResults(allTags);
+	$(".query").keyup(function() {
+		var query = $(this).val();
+		var tickers= filterTags(query);
+		showResults(tickers);
+	});
+
 });
 
 function filterTags(query) {
-	return $.grep(allTags, function(tag) {
-		return matches(tag.name, query) || matches(tag.description, query);
+	return $.grep(allTickers, function(ticker) {
+		return matches(ticker['Company'], query);
 	});
 }
 
@@ -32,19 +54,19 @@ function matches(a, b) {
 function showResults(results) {
 	$("ul.results li").remove();
 
-	$.each(results, function(i, tag) {
-		console.log(tag);
+	$.each(results, function(i, ticker) {
 		var nameNode = $("<div/>");
 		nameNode.addClass("name");
-		nameNode.text(tag.name);
+		nameNode.text(ticker['Company']);
 
 		var descriptionNode = $("<div/>");
 		descriptionNode.addClass("description");
-		descriptionNode.text(tag.description);
+		descriptionNode.text(ticker['Sector']);
 
 		var tagNode = $("<li/>");
 		tagNode.append(nameNode);
 		tagNode.append(descriptionNode);
+		tagNode.prop('_data', ticker);
 
 		tagNode.appendTo($("ul.results")).fadeIn(2000);
 	});
