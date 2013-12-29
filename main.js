@@ -66,6 +66,10 @@ function matches(a, b) {
 }
 
 function addToBasket(tag) {
+	if ($(".basket ul li").length == 8) {
+		return;
+	}
+
 	var data = tag.prop('_data');
 	tag.fadeOut(fadeDuration, function() { $(this).remove(); });
 
