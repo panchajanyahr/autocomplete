@@ -29,6 +29,12 @@ function processCsv(path, callback) {
 	});
 }
 
+function recolorBasket() {
+	$('ul.basket li').each(function(i, node) {
+		$(node).css('background-color', colorTable[i]);
+	});
+}
+
 $(function() {
 	processCsv('List.csv', function(rows) {
 		allTickers = rows;
@@ -72,8 +78,13 @@ function addToBasket(tag) {
 	tagNode.prop('_data', data);
 
 	tagNode.appendTo($("ul.basket")).hide().fadeIn(fadeDuration);
+
 	closeNode.click(function() {
-		tagNode.fadeOut(fadeDuration, function() { $(this).remove(); });
+		tagNode.fadeOut(fadeDuration, function() { 
+			$(this).remove(); 
+			recolorBasket();
+		});
+		
 	});
 }
 
