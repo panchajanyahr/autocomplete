@@ -55,7 +55,7 @@ function matches(a, b) {
 function showResults(results) {
 	$("ul.results li").remove();
 
-	$.each(results, function(i, ticker) {
+	$.each(results.slice(0, 18), function(i, ticker) {
 		var nameNode = $("<div/>");
 		nameNode.addClass("name");
 		nameNode.text(ticker['Company']);
