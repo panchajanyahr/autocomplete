@@ -46,7 +46,7 @@ $(function() {
 
 function filterTags(query) {
 	return $.grep(allTickers, function(ticker) {
-		return matches(ticker['Company'], query);
+		return matches(ticker['Company'], query) || matches(ticker['Sector'], query);
 	});
 }
 
