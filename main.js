@@ -8,19 +8,22 @@ $(function() {
 		showResults(allTickers);
 	});
 
-	$(".query").keyup(function() {
-		var query = $(this).val();
-		var tickers= filterTags(query);
-		showResults(tickers);
-	});
+	$(".query").keyup(search);
 
 	$('.remove-all').click(function() {
 		$('.basket ul li').fadeOut(fadeDuration, function() { 
-			$(this).remove(); 
+			$(this).remove();
+			search(); 
 		});
 	});
 
 });
+
+function search() {
+	var query = $(".query").val();
+	var tickers= filterTags(query);
+	showResults(tickers);	
+}
 
 function processCsv(path, callback) {
 	$.ajax({
@@ -92,6 +95,7 @@ function addToBasket(tag) {
 		tagNode.fadeOut(fadeDuration, function() { 
 			$(this).remove(); 
 			recolorBasket();
+			search();
 		});
 		
 	});
