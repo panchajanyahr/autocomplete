@@ -10,6 +10,7 @@ ul, li {
 
 ul.results {
 	width: 600px;
+	height: 325px;
 	float: left;
 }
 
@@ -22,6 +23,7 @@ ul.basket {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 200px;
+	min-height: 315px;
 }
 
 ul.basket li {
