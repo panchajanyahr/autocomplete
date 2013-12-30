@@ -12,6 +12,7 @@ $(function() {
 	$('.remove-all').click(function() {
 		$('.basket li').fadeOut(fadeDuration, function() { 
 			$(this).remove();
+			$(".results").removeClass("basket-full");
 			resetBasket();
 			search(); 
 		});
@@ -66,7 +67,7 @@ function resetBasket() {
 	});
 
 	$('.basket li').size() > 0 ? $('.remove-all').show()
-							   : $('.remove-all').hide();
+							   : $('.remove-all').hide();	
 }
 
 function filterTags(query) {
@@ -118,11 +119,17 @@ function addToBasket(tag) {
 	closeNode.click(function() {
 		tagNode.fadeOut(fadeDuration, function() { 
 			$(this).remove(); 
+			$(".results").removeClass("basket-full");
 			resetBasket();
 			search();
 		});
 		
 	});
+
+	if($(".basket li").size() == 8) {
+		$(".results").addClass("basket-full");	
+	} 
+
 }
 
 function noQuery() {
@@ -180,7 +187,7 @@ function showResults(results) {
 			tagNode.attr('data-position', 'right center');
 			tagNode.prop('_data', ticker);
 
-			tagNode.appendTo($(".with-results.results"));
+			tagNode.appendTo($(".with-results.results ul"));
 
 			tagNode.click(function() {
 				addToBasket(tagNode);

@@ -72,6 +72,10 @@ h2 {
 	cursor: pointer;
 }
 
+.results.basket-full ul li {
+	cursor: auto;
+}
+
 .results li {
 	display: inline-block;
 	width: 28%;
