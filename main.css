@@ -116,4 +116,9 @@ h2 {
 	right: 10px;
 	font-size: 30px;
 	cursor: pointer;
+	color: darkgray;
+}
+
+.remove-all:hover {
+	color: black;
 }
