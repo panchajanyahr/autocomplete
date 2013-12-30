@@ -5,7 +5,6 @@ var colorTable = ["#3366cc","#dc3912","#ff9900","#109618","#990099","#0099c6","#
 $(function() {
 	processCsv('List.csv', function(rows) {
 		allTickers = rows;
-		showResults(allTickers);
 	});
 
 	$(".query").keyup(search);
