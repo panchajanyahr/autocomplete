@@ -97,21 +97,49 @@ h2 {
 	font-size: 15px;
 }
 
+.results li.added {
+	background-color: #CEDCE7; background-image: -webkit-gradient(linear, left top, left bottom, from(#CEDCE7), to(#596a72));
+	background-image: -webkit-linear-gradient(top, #CEDCE7, #596a72);
+	background-image: -moz-linear-gradient(top, #CEDCE7, #596a72);
+	background-image: -ms-linear-gradient(top, #CEDCE7, #596a72);
+	background-image: -o-linear-gradient(top, #CEDCE7, #596a72);
+	background-image: linear-gradient(to bottom, #CEDCE7, #596a72);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#CEDCE7, endColorstr=#596a72);
+	color: white;
+}
+
+.results li i.fa-check {
+	display: none;
+}
+
+.results li.added i.fa-plus {
+	display: none;
+}
+
+.results li.added i.fa-check {
+	display: inline-block;
+	color: white;
+}
+
+.results li.added div.description {
+	color: lightgray;
+}
+
 .results div {
 	width: 100%;
 }
 
 .results div.description {
 	font-size: 13px;
+	margin-top: 5px;
 }
 
-.results li a {
+.results li i {
 	position: absolute;
 	right: 10px;
 	top: 50%;
-	margin-top: -15px;
+	margin-top: -8px;
 	color: gray;
-	font-size: 25px;
+	font-size: 15px;
 }
 
 .results .description {

@@ -76,15 +76,24 @@ function matches(a, b) {
 	return a.toLowerCase().indexOf(b.toLowerCase()) != -1;
 }
 
+function inBasket(data) {
+	var allData = $.map($('.basket li'), function(node) {
+		return $(node).prop('_data');
+	});
+
+	return $.inArray(data, allData) != -1;
+}
+
 function addToBasket(tag) {
-	if ($(".basket li").size() == 8) {
+	var data = tag.prop('_data');
+
+	if ($(".basket li").size() == 8 || inBasket(data)) {
 		return;
 	}
 
 	$(".basket").children().show();
 
-	var data = tag.prop('_data');
-	tag.fadeOut(fadeDuration, function() { $(this).remove(); });
+	tag.addClass('added');
 
 	var nameNode = $("<span/>");
 	nameNode.text(data['Ticker']);
@@ -136,14 +145,23 @@ function showResults(results) {
 			descriptionNode.addClass("description");
 			descriptionNode.text(ticker['Sector']);
 
-			var plusNode = $("<a/>");
-			plusNode.addClass("plus");
-			plusNode.text("+");
+			var plusNode = $("<i/>");
+			plusNode.addClass("fa");
+			plusNode.addClass("fa-plus");
+
+			var checkNode = $("<i/>");
+			checkNode.addClass("fa");
+			checkNode.addClass("fa-check");
 
 			var tagNode = $("<li/>");
 			tagNode.append(nameNode);
 			tagNode.append(descriptionNode);
 			tagNode.append(plusNode);
+			tagNode.append(checkNode);
+
+			if(inBasket(ticker)) {
+				tagNode.addClass('added');
+			}
 			tagNode.prop('_data', ticker);
 
 			tagNode.appendTo($(".with-results.results"));
