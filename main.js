@@ -21,6 +21,7 @@ $(function() {
 	resetBasket();
 
 	$('.remove-all').popup();
+	window.onfocus = function() { $('.popup').hide(); };
 });
 
 function search() {
@@ -46,8 +47,8 @@ function processCsv(path, callback) {
 				var values = fields[i].split(',');
 
 				if (values.length > 1) {
-					for (var j = 0; j < headers.length - 1; j += 1) {
-						tick[headers[j]] = values[j];
+					for (var j = 0; j < headers.length; j += 1) {
+						tick[headers[j].trim()] = values[j];
 					}
 
 					rows.push(tick);					
@@ -166,6 +167,17 @@ function showResults(results) {
 			if(inBasket(ticker)) {
 				tagNode.addClass('added');
 			}
+
+			var companyName = '<li><label>Company:</label> ' + ticker["Company"] + '</li>';
+			var tickerNode = '<li><label>Ticker:</label> ' + ticker["Ticker"] + '</li>';
+			var sectorNode = '<li><label>Sector:</label> ' + ticker["Sector"] + '</li>';
+			var marketCap = '<li><label>Market Cap:</label> ' + ticker["Market Cap"] + '</li>';
+			var sales = '<li><label>Sales:</label> ' + ticker["Sales 2012"] + '</li>';
+			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA 2012"] + '</li>';
+			var tooltip = "<ul class='details'>" + companyName + tickerNode + sectorNode + marketCap + ebitda + "</ul>";
+
+			tagNode.attr('data-html', tooltip);
+			tagNode.attr('data-position', 'right center');
 			tagNode.prop('_data', ticker);
 
 			tagNode.appendTo($(".with-results.results"));
@@ -173,12 +185,8 @@ function showResults(results) {
 			tagNode.click(function() {
 				addToBasket(tagNode);
 			});
+
+			tagNode.popup();
 		});
 	}
-
-
-
-
-
 }
-

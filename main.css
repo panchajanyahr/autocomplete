@@ -148,3 +148,13 @@ h2 {
 .remove-all:hover {
 	color: black;
 }
+
+.details li {
+	margin-bottom: 5px;
+	font-size: 15px;
+}
+
+.details label {
+	font-size: 17px;
+	font-weight: 600;
+}
