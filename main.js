@@ -12,11 +12,13 @@ $(function() {
 	$('.remove-all').click(function() {
 		$('.basket li').fadeOut(fadeDuration, function() { 
 			$(this).remove();
+			resetBasket();
 			search(); 
 		});
 	});
 
 	$('.results').children().hide();
+	resetBasket();
 });
 
 function search() {
@@ -52,10 +54,13 @@ function processCsv(path, callback) {
 	});
 }
 
-function recolorBasket() {
+function resetBasket() {
 	$('.basket li').each(function(i, node) {
 		$(node).css('background-color', colorTable[i]);
 	});
+
+	$('.basket li').size() > 0 ? $('.remove-all').show()
+							   : $('.remove-all').hide();
 }
 
 function filterTags(query) {
@@ -69,9 +74,11 @@ function matches(a, b) {
 }
 
 function addToBasket(tag) {
-	if ($(".basket li").length == 8) {
+	if ($(".basket li").size() == 8) {
 		return;
 	}
+
+	$(".basket").children().show();
 
 	var data = tag.prop('_data');
 	tag.fadeOut(fadeDuration, function() { $(this).remove(); });
@@ -94,7 +101,7 @@ function addToBasket(tag) {
 	closeNode.click(function() {
 		tagNode.fadeOut(fadeDuration, function() { 
 			$(this).remove(); 
-			recolorBasket();
+			resetBasket();
 			search();
 		});
 		
