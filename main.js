@@ -176,12 +176,10 @@ function showResults(results) {
 			}
 
 			var companyName = '<li><label>Company:</label> ' + ticker["Company"] + '</li>';
-			var tickerNode = '<li><label>Ticker:</label> ' + ticker["Ticker"] + '</li>';
-			var sectorNode = '<li><label>Sector:</label> ' + ticker["Sector"] + '</li>';
 			var marketCap = '<li><label>Market Cap:</label> ' + ticker["Market Cap"] + '</li>';
-			var sales = '<li><label>Sales:</label> ' + ticker["Sales 2012"] + '</li>';
+			var sales = '<li><label>Revenue:</label> ' + ticker["Sales 2012"] + '</li>';
 			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA 2012"] + '</li>';
-			var tooltip = "<ul class='details'>" + companyName + tickerNode + sectorNode + marketCap + ebitda + "</ul>";
+			var tooltip = "<ul class='details'>" + companyName  + marketCap + sales + ebitda + "</ul>";
 
 			tagNode.attr('data-html', tooltip);
 			tagNode.attr('data-position', 'right center');
