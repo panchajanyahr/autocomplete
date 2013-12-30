@@ -1,9 +1,16 @@
+body {
+	margin: 10px;
+}
+
 ul, li {
 	list-style-type: none;
 	padding:0; 
 	margin:0;
 }
 
+.query-container {
+	margin-bottom: 20px;
+}
 .query {
 	margin-left: 5px;
 }
@@ -31,12 +38,13 @@ ul, li {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 200px;
-	min-height: 285px;
+	min-height: 270px;
 	margin-top: 5px;
 }
 h2 {
 	font-size: 20px;
 	margin: 10px 0;
+	font-weight: 600;
 }
 
 .basket li {
