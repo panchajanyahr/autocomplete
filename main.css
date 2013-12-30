@@ -34,8 +34,9 @@ ul, li {
 	min-height: 285px;
 	margin-top: 5px;
 }
-.basket p {
-	display: inline;
+h2 {
+	font-size: 20px;
+	margin: 10px 0;
 }
 
 .basket li {
@@ -111,7 +112,7 @@ ul, li {
 
 .remove-all {
 	position: absolute;
-	top: 30px;
+	top: 50px;
 	right: 10px;
 	font-size: 30px;
 	cursor: pointer;

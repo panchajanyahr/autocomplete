@@ -17,14 +17,17 @@ $(function() {
 		});
 	});
 
-	$('.results').children().hide();
+	noQuery();
 	resetBasket();
 });
 
 function search() {
 	var query = $(".query").val();
-	var tickers= query.length == 0 ? [] : filterTags(query);
-	showResults(tickers);	
+	if (query.length == 0) {
+		noQuery();	
+	} else {
+		showResults(filterTags(query));	
+	}
 }
 
 function processCsv(path, callback) {
@@ -108,36 +111,52 @@ function addToBasket(tag) {
 	});
 }
 
+function noQuery() {
+	$('.with-results.results').hide();
+	$('.no-results.results').hide();
+	$('.no-query.results').show();
+}
 function showResults(results) {
-	results.length > 0 ? $('.results').children().show()
-					   : $('.results').children().hide();
+	$('.no-query.results').hide();
 
-	$(".results li").remove();
+	if (results.length == 0) {
+		$('.with-results.results').hide();
+		$('.no-results.results').show();
+	} else {
+		$('.with-results.results').show();
+		$('.no-results.results').hide();
+		
+		$(".with-results.results li").remove();
+		$.each(results.slice(0, 18), function(i, ticker) {
+			var nameNode = $("<div/>");
+			nameNode.addClass("name");
+			nameNode.text(ticker['Company']);
 
-	$.each(results.slice(0, 18), function(i, ticker) {
-		var nameNode = $("<div/>");
-		nameNode.addClass("name");
-		nameNode.text(ticker['Company']);
+			var descriptionNode = $("<div/>");
+			descriptionNode.addClass("description");
+			descriptionNode.text(ticker['Sector']);
 
-		var descriptionNode = $("<div/>");
-		descriptionNode.addClass("description");
-		descriptionNode.text(ticker['Sector']);
+			var plusNode = $("<a/>");
+			plusNode.addClass("plus");
+			plusNode.text("+");
 
-		var plusNode = $("<a/>");
-		plusNode.addClass("plus");
-		plusNode.text("+");
+			var tagNode = $("<li/>");
+			tagNode.append(nameNode);
+			tagNode.append(descriptionNode);
+			tagNode.append(plusNode);
+			tagNode.prop('_data', ticker);
 
-		var tagNode = $("<li/>");
-		tagNode.append(nameNode);
-		tagNode.append(descriptionNode);
-		tagNode.append(plusNode);
-		tagNode.prop('_data', ticker);
+			tagNode.appendTo($(".with-results.results"));
 
-		tagNode.appendTo($(".results"));
-
-		tagNode.click(function() {
-			addToBasket(tagNode);
+			tagNode.click(function() {
+				addToBasket(tagNode);
+			});
 		});
-	});
+	}
+
+
+
+
+
 }
 
