@@ -175,7 +175,7 @@ function showResults(results) {
 				tagNode.addClass('added');
 			}
 
-			var companyName = '<li><label>Company:</label> ' + ticker["Company"] + '</li>';
+			var companyName = '<li><label>' + ticker["Company"] + '</label></li>';
 			var marketCap = '<li><label>Market Cap:</label> ' + ticker["Market Cap"] + '</li>';
 			var sales = '<li><label>Revenue:</label> ' + ticker["Sales 2012"] + '</li>';
 			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA 2012"] + '</li>';
