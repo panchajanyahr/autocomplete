@@ -22,7 +22,6 @@ $(function() {
 	noQuery();
 	resetBasket();
 
-	$('.remove-all').popup();
 	window.onfocus = function() { $('.popup').hide(); };
 });
 
