@@ -70,7 +70,7 @@ function filterTags(query) {
 	return $.grep(allTickers, function(ticker) {
 		return matches(ticker['Company'], query) || matches(ticker['Sector'], query);
 	}).sort(function(a,b){
-		return parseInt(a['Market Cap']) - parseInt(b['Market Cap']);
+		return parseInt(b['Market Cap']) - parseInt(a['Market Cap']);
 	});
 }
 
