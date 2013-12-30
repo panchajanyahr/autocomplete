@@ -8,7 +8,7 @@ ul, li {
 	margin-left: 5px;
 }
 
-ul.results {
+.results {
 	width: 600px;
 	height: 325px;
 	float: left;
@@ -19,8 +19,12 @@ ul.results {
 	position: relative;
 }
 
-.basket ul {
+.basket {
 	margin-left: 30px;
+	width: 200px;
+}
+
+.basket ul {
 	border: 1px solid #5897fb;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 	-webkit-box-sizing: border-box;
@@ -28,9 +32,13 @@ ul.results {
 	box-sizing: border-box;
 	width: 200px;
 	min-height: 285px;
+	margin-top: 5px;
+}
+.basket p {
+	display: inline;
 }
 
-.basket ul li {
+.basket li {
 	padding: 5px;
 	border-radius: 5px;
 	background-clip: padding-box;
@@ -47,7 +55,7 @@ ul.results {
 	padding-right: 25px;
 }
 
-.basket ul li i {
+.basket li i {
 	position: absolute;
 	right: 5px;
 	top: 4px;
@@ -55,7 +63,7 @@ ul.results {
 	cursor: pointer;
 }
 
-ul.results li {
+.results li {
 	display: inline-block;
 	width: 28%;
 	padding: 5px 20px 5px 5px;
@@ -80,15 +88,15 @@ ul.results li {
 	font-size: 15px;
 }
 
-ul.results div {
+.results div {
 	width: 100%;
 }
 
-ul.results div.description {
+.results div.description {
 	font-size: 13px;
 }
 
-ul.results li a {
+.results li a {
 	position: absolute;
 	right: 10px;
 	top: 50%;
@@ -97,13 +105,13 @@ ul.results li a {
 	font-size: 25px;
 }
 
-ul.results .description {
+.results .description {
 	color: gray;
 }
 
 .remove-all {
 	position: absolute;
-	top: 10px;
+	top: 30px;
 	right: 10px;
 	font-size: 30px;
 	cursor: pointer;

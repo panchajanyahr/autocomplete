@@ -10,17 +10,18 @@ $(function() {
 	$(".query").keyup(search);
 
 	$('.remove-all').click(function() {
-		$('.basket ul li').fadeOut(fadeDuration, function() { 
+		$('.basket li').fadeOut(fadeDuration, function() { 
 			$(this).remove();
 			search(); 
 		});
 	});
 
+	$('.results').children().hide();
 });
 
 function search() {
 	var query = $(".query").val();
-	var tickers= filterTags(query);
+	var tickers= query.length == 0 ? [] : filterTags(query);
 	showResults(tickers);	
 }
 
@@ -52,7 +53,7 @@ function processCsv(path, callback) {
 }
 
 function recolorBasket() {
-	$('.basket ul li').each(function(i, node) {
+	$('.basket li').each(function(i, node) {
 		$(node).css('background-color', colorTable[i]);
 	});
 }
@@ -68,7 +69,7 @@ function matches(a, b) {
 }
 
 function addToBasket(tag) {
-	if ($(".basket ul li").length == 8) {
+	if ($(".basket li").length == 8) {
 		return;
 	}
 
@@ -85,7 +86,7 @@ function addToBasket(tag) {
 	var tagNode = $("<li/>");
 	tagNode.append(nameNode);
 	tagNode.append(closeNode);
-	tagNode.css('background-color', colorTable[$(".basket ul li").length]);
+	tagNode.css('background-color', colorTable[$(".basket li").length]);
 	tagNode.prop('_data', data);
 
 	tagNode.appendTo($(".basket ul")).hide().fadeIn(fadeDuration);
@@ -101,7 +102,10 @@ function addToBasket(tag) {
 }
 
 function showResults(results) {
-	$("ul.results li").remove();
+	results.length > 0 ? $('.results').children().show()
+					   : $('.results').children().hide();
+
+	$(".results li").remove();
 
 	$.each(results.slice(0, 18), function(i, ticker) {
 		var nameNode = $("<div/>");
@@ -122,7 +126,7 @@ function showResults(results) {
 		tagNode.append(plusNode);
 		tagNode.prop('_data', ticker);
 
-		tagNode.appendTo($("ul.results"));
+		tagNode.appendTo($(".results"));
 
 		tagNode.click(function() {
 			addToBasket(tagNode);
