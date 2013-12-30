@@ -19,6 +19,8 @@ $(function() {
 
 	noQuery();
 	resetBasket();
+
+	$('.remove-all').popup();
 });
 
 function search() {
