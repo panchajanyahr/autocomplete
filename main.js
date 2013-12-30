@@ -5,7 +5,9 @@ var colorTable = ["#3366cc","#dc3912","#ff9900","#109618","#990099","#0099c6","#
 $(function() {
 	processCsv('List.csv', function(rows) {
 		$('.ui.dimmer').remove();
-		allTickers = rows;
+		allTickers = $.grep(rows, function(row) {
+			return !isNaN(marketCapValue(row["Market Cap"]));
+		});
 	});
 
 	$(".query").keyup(search);
@@ -74,8 +76,18 @@ function filterTags(query) {
 	return $.grep(allTickers, function(ticker) {
 		return matches(ticker['Company'], query) || matches(ticker['Sector'], query);
 	}).sort(function(a,b){
-		return parseInt(b['Market Cap']) - parseInt(a['Market Cap']);
-	});
+		return marketCapValue(b['Market Cap']) - marketCapValue(a['Market Cap']);
+	});	
+}
+
+function marketCapValue(str) {
+	if (/B$/.test(str)) {
+		return parseInt(str.substring(0, str.length - 1)) * 1000;
+	} else if (/M$/.test(str)) {
+		return parseInt(str.substring(0, str.length - 1));
+	}
+
+	return Number.NaN;
 }
 
 function matches(a, b) {
