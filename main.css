@@ -165,13 +165,16 @@ h2 {
 }
 
 #dimmer {
-    background:#000;
-    opacity:0.5;
-    position:fixed; /* important to use fixed, not absolute */
+	position:absolute;
+	opacity: 0.5;
     top:0;
     left:0;
+    background:gray;
     width:100%;
     height:100%;
+    /* Next 2 lines IE8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
 }
 
 #loading-indicator {
