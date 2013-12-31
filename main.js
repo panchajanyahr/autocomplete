@@ -10,7 +10,8 @@ if(typeof String.prototype.trim !== 'function') {
 
 $(function() {
 	processCsv('FullList.csv', function(rows) {
-		$('.ui.dimmer').remove();
+		$('#dimmer').remove();
+		$('#loading-indicator').remove();
 		allTickers = $.grep(rows, function(row) {
 			return !isNaN(marketCapValue(row["Market Cap"]));
 		});
