@@ -201,7 +201,7 @@ function showResults(results) {
 
 			tagNode.attr('data-html', 'true');
 			tagNode.attr('data-content', tooltip);
-			// tagNode.attr('data-position', 'right center');
+			tagNode.attr('data-container', 'body');
 			tagNode.prop('_data', ticker);
 
 			tagNode.appendTo($(".with-results.results ul"));
@@ -210,7 +210,11 @@ function showResults(results) {
 				addToBasket(tagNode);
 			});
 
-			
+			tagNode.hover(function() {
+				$(this).popover('show');
+			}, function() {
+				$(this).popover('hide');
+			});
 		});
 		adjustHeightOfResults();
 	}

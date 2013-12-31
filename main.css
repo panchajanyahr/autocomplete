@@ -10,6 +10,11 @@ ul, li {
 	line-height: 15px;
 }
 
+.query-container {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
 .query {
 	margin-left: 5px;
 }
@@ -161,4 +166,5 @@ h2 {
 .details label {
 	font-size: 17px;
 	font-weight: 600;
+	display: inline-block;
 }
