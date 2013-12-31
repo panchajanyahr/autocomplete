@@ -163,6 +163,9 @@ h2 {
 	font-weight: 600;
 	display: inline-block;
 }
+.details span {
+	margin-left: 5px;
+}
 
 #dimmer {
 	position:absolute;
