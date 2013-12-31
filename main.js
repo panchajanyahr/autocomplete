@@ -194,9 +194,9 @@ function showResults(results) {
 				tagNode.addClass('added');
 			}
 
-			var marketCap = '<li><label>Market Cap:</label> ' + ticker["Market Cap"] + '</li>';
-			var sales = '<li><label>Revenue:</label> ' + ticker["Sales"] + '</li>';
-			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA"] + '</li>';
+			var marketCap = '<li><label>Market Cap:</label><span> ' + ticker["Market Cap"] + '</span></li>';
+			var sales = '<li><label>Revenue:</label><span> ' + ticker["Sales"] + '</span></li>';
+			var ebitda = '<li><label>EBITDA:</label><span> ' + ticker["EBITDA"] + '</span></li>';
 			var tooltip = "<ul class='details'>"  + marketCap + sales + ebitda + "</ul>";
 
 			tagNode.attr('data-html', 'true');
