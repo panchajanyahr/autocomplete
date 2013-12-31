@@ -189,8 +189,8 @@ function showResults(results) {
 
 			var companyName = '<li><label>' + ticker["Company"] + '</label></li>';
 			var marketCap = '<li><label>Market Cap:</label> ' + ticker["Market Cap"] + '</li>';
-			var sales = '<li><label>Revenue:</label> ' + ticker["Sales 2012"] + '</li>';
-			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA 2012"] + '</li>';
+			var sales = '<li><label>Revenue:</label> ' + ticker["Sales"] + '</li>';
+			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA"] + '</li>';
 			var tooltip = "<ul class='details'>" + companyName  + marketCap + sales + ebitda + "</ul>";
 
 			tagNode.attr('data-html', tooltip);
@@ -205,5 +205,16 @@ function showResults(results) {
 
 			tagNode.popup();
 		});
+		adjustHeightOfResults();
 	}
+}
+
+function adjustHeightOfResults() {
+	var maxHeight = Math.max.apply(Math, $.map($('.results li'), function(node) {
+		return $(node).height();
+	}));
+
+	$('.results li').each(function(i, node) {
+		$(node).height(maxHeight);
+	});
 }

@@ -98,7 +98,8 @@ h2 {
 	color: #333;
 
 	font-family: sans-serif;
-	font-size: 15px;
+	font-size: 12px;
+	float: left;
 }
 
 .results li.added {
@@ -119,7 +120,7 @@ h2 {
 }
 
 .results div {
-	width: 100%;
+	width: 97%;
 }
 
 .results div.description {
