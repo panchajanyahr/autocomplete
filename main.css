@@ -128,10 +128,6 @@ h2 {
 	width: 97%;
 }
 
-.results div.description {
-	font-size: 13px;
-}
-
 .results li i {
 	position: absolute;
 	right: 10px;
@@ -158,13 +154,12 @@ h2 {
 	color: black;
 }
 
-.details li {
-	margin-bottom: 5px;
-	font-size: 15px;
+.popover-title, .details li {
+	font-size: 12px;
 }
 
-.details label {
-	font-size: 17px;
+.popover-title, .details label {
+	font-size: 12px;
 	font-weight: 600;
 	display: inline-block;
 }

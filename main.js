@@ -30,7 +30,7 @@ $(function() {
 	noQuery();
 	resetBasket();
 
-	window.onfocus = function() { $('.popup').hide(); };
+	window.onfocus = function() { $('.popover').remove(); };
 });
 
 function search() {
@@ -193,13 +193,13 @@ function showResults(results) {
 				tagNode.addClass('added');
 			}
 
-			var companyName = '<li><label>' + ticker["Company"] + '</label></li>';
 			var marketCap = '<li><label>Market Cap:</label> ' + ticker["Market Cap"] + '</li>';
 			var sales = '<li><label>Revenue:</label> ' + ticker["Sales"] + '</li>';
 			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA"] + '</li>';
-			var tooltip = "<ul class='details'>" + companyName  + marketCap + sales + ebitda + "</ul>";
+			var tooltip = "<ul class='details'>"  + marketCap + sales + ebitda + "</ul>";
 
 			tagNode.attr('data-html', 'true');
+			tagNode.attr('data-title', ticker["Company"]);
 			tagNode.attr('data-content', tooltip);
 			tagNode.attr('data-container', 'body');
 			tagNode.prop('_data', ticker);
