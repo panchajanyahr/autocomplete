@@ -199,8 +199,9 @@ function showResults(results) {
 			var ebitda = '<li><label>EBITDA:</label> ' + ticker["EBITDA"] + '</li>';
 			var tooltip = "<ul class='details'>" + companyName  + marketCap + sales + ebitda + "</ul>";
 
-			tagNode.attr('data-html', tooltip);
-			tagNode.attr('data-position', 'right center');
+			tagNode.attr('data-html', 'true');
+			tagNode.attr('data-content', tooltip);
+			// tagNode.attr('data-position', 'right center');
 			tagNode.prop('_data', ticker);
 
 			tagNode.appendTo($(".with-results.results ul"));
@@ -209,7 +210,7 @@ function showResults(results) {
 				addToBasket(tagNode);
 			});
 
-			tagNode.popup();
+			
 		});
 		adjustHeightOfResults();
 	}

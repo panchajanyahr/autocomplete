@@ -1,16 +1,15 @@
 body {
 	margin: 10px;
+	line-height: 10px;
 }
 
 ul, li {
 	list-style-type: none;
 	padding:0; 
 	margin:0;
+	line-height: 15px;
 }
 
-.query-container {
-	margin-bottom: 20px;
-}
 .query {
 	margin-left: 5px;
 }
@@ -38,13 +37,14 @@ ul, li {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	width: 200px;
-	min-height: 270px;
+	min-height: 285px;
 	margin-top: 5px;
 }
 h2 {
-	font-size: 20px;
+	font-size: 18px;
 	margin: 10px 0;
 	font-weight: 600;
+	line-height: 25px;
 }
 
 .basket li {
@@ -125,7 +125,6 @@ h2 {
 
 .results div.description {
 	font-size: 13px;
-	margin-top: 5px;
 }
 
 .results li i {
