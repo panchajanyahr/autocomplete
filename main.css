@@ -162,10 +162,13 @@ h2 {
 	font-size: 12px;
 }
 
+.details label {
+	display: inline;
+}
+
 .popover-title, .details label {
 	font-size: 12px;
 	font-weight: 600;
-	display: inline-block;
 }
 .details span {
 	margin-left: 5px;
