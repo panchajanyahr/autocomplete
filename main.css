@@ -154,6 +154,10 @@ h2 {
 	color: black;
 }
 
+.popover h3 {
+	width: 130px;
+}
+
 .popover-title, .details li {
 	font-size: 12px;
 }
