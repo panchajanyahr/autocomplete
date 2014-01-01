@@ -15,6 +15,12 @@ $(function() {
 		allTickers = $.grep(rows, function(row) {
 			return !isNaN(marketCapValue(row["Market Cap"]));
 		});
+
+		$.each(allTickers, function(i, row) {
+			var company = row["Company"].toLowerCase();
+			var sector = row["Sector"].toLowerCase();
+			row["SearchKeywords"] = company + " " + sector; 
+		});
 	});
 
 	$(".query").keyup(search);
@@ -81,7 +87,7 @@ function resetBasket() {
 
 function filterTags(query) {
 	return $.grep(allTickers, function(ticker) {
-		return matches(ticker['Company'], query) || matches(ticker['Sector'], query);
+		return matches(ticker, query);
 	}).sort(function(a,b){
 		return marketCapValue(b['Market Cap']) - marketCapValue(a['Market Cap']);
 	});	
@@ -97,8 +103,17 @@ function marketCapValue(str) {
 	return Number.NaN;
 }
 
-function matches(a, b) {
-	return a.toLowerCase().indexOf(b.toLowerCase()) != -1;
+function matches(row, query) {
+	var words = query.toLowerCase().split(/\s+/);
+	for (var i = words.length - 1; i >= 0; i--) {
+		var regex = new RegExp(words[i]);
+
+		if(!regex.test(row["SearchKeywords"])) {
+			return false;
+		}
+	};
+
+	return true;
 }
 
 function inBasket(data) {
