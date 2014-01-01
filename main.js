@@ -41,6 +41,8 @@ $(function() {
 });
 
 function search() {
+	$('.popover').remove();
+
 	var query = $(".query").val();
 	if (query.length == 0) {
 		noQuery();	
@@ -227,6 +229,7 @@ function showResults(results) {
 			});
 
 			tagNode.hover(function() {
+				$('.popover').remove();
 				$(this).popover('show');
 			}, function() {
 				$(this).popover('hide');
