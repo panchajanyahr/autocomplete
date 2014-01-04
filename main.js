@@ -78,15 +78,6 @@ function processCsv(path, callback) {
 	});
 }
 
-function resetBasket() {
-	$('.basket li').each(function(i, node) {
-		$(node).css('background-color', colorTable[i]);
-	});
-
-	$('.basket li').size() > 0 ? $('.remove-all').show()
-							   : $('.remove-all').hide();	
-}
-
 function filterTags(query) {
 	return $.grep(allTickers, function(ticker) {
 		return matches(ticker, query);
@@ -166,6 +157,7 @@ function addToBasket(tag) {
 		$(".results").addClass("basket-full");	
 	} 
 
+	resetBasket();
 }
 
 function noQuery() {
@@ -247,4 +239,19 @@ function adjustHeightOfResults() {
 	$('.results li').each(function(i, node) {
 		$(node).height(maxHeight);
 	});
+}
+
+function resetBasket() {
+	$('.basket li').each(function(i, node) {
+		$(node).css('background-color', colorTable[i]);
+	});
+
+	$('.basket li').size() > 0 ? $('.remove-all').show()
+							   : $('.remove-all').hide();	
+	resetBasketFormInput();
+}
+
+function resetBasketFormInput() {
+	var value = $.map($('.basket li'), function(d) { return $(d).text(); }).join(",");
+	$('input[name=tickers]').val(value);
 }
