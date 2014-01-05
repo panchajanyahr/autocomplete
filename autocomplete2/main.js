@@ -44,7 +44,7 @@ $(function() {
 	$(".basket ul").click(function() {
 		$(".query").focus();
 	});
-
+	$(".query").focus();
 	window.onfocus = function() { $('.popover').remove(); };
 });
 
