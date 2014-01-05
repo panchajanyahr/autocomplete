@@ -14,8 +14,8 @@ ul, li {
 .query {
 	margin-left: 5px;
 	width: 100px;
-	outline: none;
-	outline-style: none;
+	outline: none !important;
+	outline-style: none !important;
   	border:none !important;
 	box-shadow:none !important;
 }
