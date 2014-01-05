@@ -202,3 +202,7 @@ h2 {
 	font-size: 18px;
 	color: black;
 }
+
+.tickers-select {
+	width: 400px;
+}
