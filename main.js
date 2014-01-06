@@ -65,9 +65,9 @@ function filterTags(query) {
 
 function marketCapValue(str) {
 	if (/B$/.test(str)) {
-		return parseInt(str.substring(0, str.length - 1)) * 1000;
+		return parseFloat(str.substring(0, str.length - 1)) * 1000;
 	} else if (/M$/.test(str)) {
-		return parseInt(str.substring(0, str.length - 1));
+		return parseFloat(str.substring(0, str.length - 1));
 	}
 
 	return Number.NaN;
