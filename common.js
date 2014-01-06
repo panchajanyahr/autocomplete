@@ -4,13 +4,8 @@ function processCsv(path, callback) {
 		url: path,
         data: null,
         success: function(text) {
-        	var result = $.parse(text, {
-    		    delimiter: ",",
-			    header: true,
-			    dynamicTyping: false
-        	});
-
-        	callback(result.results.rows);
+        	var result = $.csv.toObjects(text);
+        	callback(result);
         }
 	});
 }
