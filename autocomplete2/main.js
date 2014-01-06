@@ -23,7 +23,8 @@ $(function() {
 		$.each(allTickers, function(i, row) {
 			var company = row["Company"].toLowerCase();
 			var sector = row["Sector"].toLowerCase();
-			row["SearchKeywords"] = company + " " + sector; 
+			var ticker = row["Ticker"].toLowerCase();
+			row["SearchKeywords"] = company + " " + sector + " " + ticker; 
 		});
 	});
 
