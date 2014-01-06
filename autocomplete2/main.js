@@ -29,6 +29,10 @@ $(function() {
 	});
 
 	$(".query").keyup(search);
+	$(".query").focus(function() {
+		$(this).val("");
+		search();
+	});
 
 	$('.remove-all').click(function() {
 		$('.basket li.item').fadeOut(fadeDuration, function() { 
