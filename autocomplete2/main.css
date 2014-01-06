@@ -10,6 +10,12 @@ ul, li {
 	line-height: 15px;
 }
 
+.basket p {
+	float: left;
+	margin-top: 10px;
+	color: gray;
+	font-size: 13px;
+}
 
 .query {
 	margin-left: 5px;
