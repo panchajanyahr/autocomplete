@@ -199,6 +199,7 @@ function showResults(results) {
 			var tooltip = "<ul class='details'>"  + marketCap + sales + ebitda + "</ul>";
 
 			tagNode.attr('data-html', 'true');
+			tagNode.attr('data-placement', 'right');
 			tagNode.attr('data-title', ticker["Company"]);
 			tagNode.attr('data-content', tooltip);
 			tagNode.attr('data-container', 'body');
