@@ -79,6 +79,8 @@ function marketCapValue(str) {
 		return parseFloat(str.substring(0, str.length - 1)) * 1000;
 	} else if (/M$/.test(str)) {
 		return parseFloat(str.substring(0, str.length - 1));
+	} else if (str == "0") {
+		return 0;
 	}
 
 	return Number.NaN;
@@ -211,12 +213,14 @@ function showResults(results) {
 				addToBasket(tagNode);
 			});
 
-			tagNode.hover(function() {
-				$('.popover').remove();
-				$(this).popover('show');
-			}, function() {
-				$(this).popover('hide');
-			});
+			if (ticker["Market Cap"] != "0") {
+				tagNode.hover(function() {
+					$('.popover').remove();
+					$(this).popover('show');
+				}, function() {
+					$(this).popover('hide');
+				});
+			}
 		});
 		adjustHeightOfResults();
 	}
